@@ -1,12 +1,15 @@
 
 package com.proyectodam.gicsmobile.json;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Stats {
+public class Stats implements Parcelable {
 
     @SerializedName("checkinsCount")
     @Expose
@@ -72,4 +75,34 @@ public class Stats {
         this.tipCount = tipCount;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.checkinsCount);
+        dest.writeValue(this.usersCount);
+        dest.writeValue(this.tipCount);
+    }
+
+    public Stats() {
+    }
+
+    protected Stats(Parcel in) {
+        this.checkinsCount = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.usersCount = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.tipCount = (Integer) in.readValue(Integer.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Stats> CREATOR = new Parcelable.Creator<Stats>() {
+        public Stats createFromParcel(Parcel source) {
+            return new Stats(source);
+        }
+
+        public Stats[] newArray(int size) {
+            return new Stats[size];
+        }
+    };
 }

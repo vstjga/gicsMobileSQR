@@ -1,12 +1,15 @@
 
 package com.proyectodam.gicsmobile.json;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Category {
+public class Category implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -135,4 +138,40 @@ public class Category {
         this.primary = primary;
     }
 
+    public Category() {
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.name);
+        dest.writeString(this.pluralName);
+        dest.writeString(this.shortName);
+        dest.writeParcelable(this.icon, 0);
+        dest.writeValue(this.primary);
+    }
+
+    protected Category(Parcel in) {
+        this.id = in.readString();
+        this.name = in.readString();
+        this.pluralName = in.readString();
+        this.shortName = in.readString();
+        this.icon = in.readParcelable(Icon.class.getClassLoader());
+        this.primary = (Boolean) in.readValue(Boolean.class.getClassLoader());
+    }
+
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        public Category createFromParcel(Parcel source) {
+            return new Category(source);
+        }
+
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 }

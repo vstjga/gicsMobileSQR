@@ -1,6 +1,9 @@
 
 package com.proyectodam.gicsmobile.json;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -8,7 +11,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Venue {
+public class Venue implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -305,4 +308,57 @@ public class Venue {
         this.venueChains = venueChains;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.name);
+        dest.writeParcelable(this.contact, 0);
+        dest.writeParcelable(this.location, 0);
+        dest.writeTypedList(categories);
+        dest.writeValue(this.verified);
+        dest.writeParcelable(this.stats, 0);
+        dest.writeString(this.url);
+        dest.writeParcelable(this.delivery, 0);
+        dest.writeValue(this.allowMenuUrlEdit);
+        dest.writeParcelable(this.specials, 0);
+        dest.writeParcelable(this.hereNow, 0);
+        dest.writeString(this.referralId);
+        dest.writeList(this.venueChains);
+    }
+
+    public Venue() {
+    }
+
+    protected Venue(Parcel in) {
+        this.id = in.readString();
+        this.name = in.readString();
+        this.contact = in.readParcelable(Contact.class.getClassLoader());
+        this.location = in.readParcelable(Location.class.getClassLoader());
+        this.categories = in.createTypedArrayList(Category.CREATOR);
+        this.verified = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.stats = in.readParcelable(Stats.class.getClassLoader());
+        this.url = in.readString();
+        this.delivery = in.readParcelable(Delivery.class.getClassLoader());
+        this.allowMenuUrlEdit = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.specials = in.readParcelable(Specials.class.getClassLoader());
+        this.hereNow = in.readParcelable(HereNow.class.getClassLoader());
+        this.referralId = in.readString();
+        this.venueChains = new ArrayList<Object>();
+        in.readList(this.venueChains, List.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Venue> CREATOR = new Parcelable.Creator<Venue>() {
+        public Venue createFromParcel(Parcel source) {
+            return new Venue(source);
+        }
+
+        public Venue[] newArray(int size) {
+            return new Venue[size];
+        }
+    };
 }
