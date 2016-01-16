@@ -47,33 +47,18 @@ public class VenueAdapter extends ArrayAdapter<Venue> {
         Integer numcat = categorias.size();
         String  numcats = numcat.toString();
 
-        Category categoria1 = categorias.get(0);
+        String url_imagen = "https://ss3.4sqi.net/img/categories_v2/food/pizza_bg_32.png"; // imagen omision
 
-//       for(int x=0;x<numcat;x++) {
- //           Log.d(categorias.get(x).getName(),"categorias");
- //       }
+        if (numcat > 0) {
+            Category categoria1 = categorias.get(0);
+            Icon icono = categoria1.getIcon();
+            url_imagen = icono.getPrefix() + "bg_88" + icono.getSuffix(); // error autorizacion en url-api
+        }
 
-         Icon icono = categoria1.getIcon();
-         String url_imagen = icono.getPrefix() + icono.getSuffix(); // error autorizacion en url-api
-         Log.d(url_imagen, "imagen");
+        Picasso.with(getContext()).load(url_imagen).into(ivPosterImage);
 
-         url_imagen = "http://image.tmdb.org/t/p/w130/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg"; // imagen pruebas
+    return convertView;
 
-
-       Picasso.with(getContext()).load(url_imagen).into(ivPosterImage);
-
-
-//       respuesta en la llamada
- //       <Error>
- //       <Code>AccessDenied</Code>
- //       <Message>Access Denied</Message>
- //       <RequestId>EC3AF51A1CF10264</RequestId>
- //       <HostId>
- //               tLpkYU4/DamMqX27X02v0BJk16Uvw0fv72eezUYFpc7zWVX1MXupbeIPHdJfNQtp/Pj95xwL3Nc=
- //       </HostId>
- //       </Error>
-
-        return convertView;
     }
 
 }
