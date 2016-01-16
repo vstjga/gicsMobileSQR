@@ -47,7 +47,7 @@ public class VenueAdapter extends ArrayAdapter<Venue> {
         Integer numcat = categorias.size();
         String  numcats = numcat.toString();
 
-        String url_imagen = "https://ss3.4sqi.net/img/categories_v2/food/pizza_bg_32.png"; // imagen omision
+        String url_imagen = "https://ss3.4sqi.net/img/categories_v2/food/pizza_bg_88.png"; // imagen omision
 
         if (numcat > 0) {
             Category categoria1 = categorias.get(0);
