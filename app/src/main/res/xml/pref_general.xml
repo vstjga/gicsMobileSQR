@@ -1,0 +1,34 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR"
+        android:inputType="textCapWords"
+        android:key="clave"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="clave" />
+
+    <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="40.7463956,-73.98"
+        android:inputType="textCapWords"
+        android:key="ubicacion"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Ubicacion" />
+
+    <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="20160101"
+        android:inputType="textCapWords"
+        android:key="fecha"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="fecha" />
+
+
+
+</PreferenceScreen>
