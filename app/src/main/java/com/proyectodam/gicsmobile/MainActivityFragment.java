@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -81,14 +82,16 @@ public class MainActivityFragment extends Fragment {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
+        String clave          = preferences.getString("clave", "KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR");
+        String ll             = preferences.getString("ubicacion", "41.387920,2.169919");
+        String v              = preferences.getString("fecha", "20160101");
 
-         String clave       = preferences.getString("clave","a");
+        Log.d(clave, "preferencias --> clave");
+        Log.d(ll, "preferencias --> ubicacion");
+        Log.d(v, "preferencias --> fecha");
 
-         String ll          = preferences.getString("tipus_consulta", "valoradas");;
-         String v          = "20160101";
 
-
-         apiClient.getLugares(adapter, clave, ll, v);
+        apiClient.getLugares(adapter, clave, ll, v);
 
 
     }

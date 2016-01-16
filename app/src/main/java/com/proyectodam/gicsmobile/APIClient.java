@@ -23,9 +23,9 @@ public class APIClient {
 
 
     final String BASE_URL = "https://api.foursquare.com";
-    final String clavef = "KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR";
-    final String llf = "40.7463956,-73.98";
-    final String vf = "20160101";
+    final String clavefinal = "KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR";
+    final String llfinal = "41.387920,2.169919";  // poblenou
+    final String vfinal = "20160101";
 
   //  https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=40.7463956,-73.9852992"
 
@@ -45,7 +45,7 @@ public class APIClient {
 
     public void getLugares(final ArrayAdapter<Venue> adapter, String clave, String ll, String v) {
         Log.d(clave, "DEBUGJGA");
-        Call<Lugares> call = servei.getLugaresSQR(clavef, llf, vf);
+        Call<Lugares> call = servei.getLugaresSQR(clave, ll, v);
         call.enqueue(new Callback<Lugares>() {
 
                          @Override

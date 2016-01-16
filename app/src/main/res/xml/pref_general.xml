@@ -1,4 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
     <EditTextPreference
         android:capitalize="words"
         android:defaultValue="KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR"
@@ -7,11 +8,11 @@
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="clave" />
+        android:title="Clave" />
 
     <EditTextPreference
         android:capitalize="words"
-        android:defaultValue="40.7463956,-73.98"
+        android:defaultValue="41.387920,2.169919"
         android:inputType="textCapWords"
         android:key="ubicacion"
         android:maxLines="1"
@@ -21,14 +22,12 @@
 
     <EditTextPreference
         android:capitalize="words"
-        android:defaultValue="20160101"
+        android:defaultValue="201160101"
         android:inputType="textCapWords"
         android:key="fecha"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="fecha" />
-
-
+        android:title="Fecha" />
 
 </PreferenceScreen>

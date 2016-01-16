@@ -17,14 +17,7 @@
     <string name="pref_default_display_name">John Smith</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="tipus_consulta_titles">
-        <item>Mejor valoradas</item>
-        <item>Mas listProductos</item>
-    </string-array>
-    <string-array name="tipus_consulta_values">
-        <item>valoradas</item>
-        <item>listProductos</item>
-    </string-array>
+
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
