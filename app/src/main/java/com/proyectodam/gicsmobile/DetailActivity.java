@@ -29,6 +29,19 @@ public class DetailActivity extends AppCompatActivity {
         TextView Distance = (TextView) findViewById(R.id.tvDistance);
         ImageView ivPosterImage = (ImageView) findViewById(R.id.ivPosterImage);
 
+        TextView ActTitul = (TextView) findViewById(R.id.tvActTitul);
+        TextView ActName = (TextView) findViewById(R.id.tvActName);
+
+        TextView DirTitul = (TextView) findViewById(R.id.tvDirTitul);
+        TextView DirCalle = (TextView) findViewById(R.id.tvDirCalle);
+        TextView DirCpostal = (TextView) findViewById(R.id.tvDirCpostal);
+        TextView DirPobla = (TextView) findViewById(R.id.tvDirPobla);
+        TextView DirPais = (TextView) findViewById(R.id.tvDirPais);
+
+
+
+        String nombreCat = "";
+
         Name.setText(lugares.getName());
         Address.setText(lugares.getLocation().getAddress());
         Distance.setText(lugares.getLocation().getDistance().toString() + " metros");
@@ -43,9 +56,26 @@ public class DetailActivity extends AppCompatActivity {
             Category categoria1 = categorias.get(0);
             Icon icono = categoria1.getIcon();
             url_imagen = icono.getPrefix() + "bg_88" + icono.getSuffix(); // error autorizacion en url-api
+            nombreCat  = categoria1.getName();
         }
 
         Picasso.with(this).load(url_imagen).into(ivPosterImage);
+
+        ActTitul.setText("Categoria");
+        ActName.setText("Tipo: " + nombreCat);
+
+        String codigoPostal = lugares.getLocation().getPostalCode();
+
+        if (codigoPostal == null){
+            codigoPostal =  "";
+        }
+
+        DirTitul.setText("Direccion");
+        DirCalle.setText("Calle: " + lugares.getLocation().getAddress());
+        DirCpostal.setText("C.Postal: " + codigoPostal);
+        DirPobla.setText("Población: " + lugares.getLocation().getCity());
+        DirPais.setText("Población: " + lugares.getLocation().getCountry());
+
     }
 
 }

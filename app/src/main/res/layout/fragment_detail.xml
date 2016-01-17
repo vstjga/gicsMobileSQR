@@ -80,16 +80,70 @@ tools:showIn="@layout/activity_detail">
             </LinearLayout>
 
         </LinearLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/resumenPeli"
+            android:id="@+id/tvActTitul"
             android:layout_below="@+id/linea"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="23dp"
+            android:layout_margin="5dip"
+            android:hint="tvActTitul"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvActName"
+            android:layout_below="@+id/tvActTitul"
 
-    </RelativeLayout>
+            android:layout_margin="5dip"
+            android:hint="tvDirCalle"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDirTitul"
+            android:layout_below="@+id/tvActName"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="23dp"
+            android:layout_margin="5dip"
+            android:hint="tvDirTitul"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDirCalle"
+            android:layout_below="@+id/tvDirTitul"
+
+            android:layout_margin="5dip"
+            android:hint="tvDirCalle"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDirCpostal"
+            android:layout_below="@+id/tvDirCalle"
+
+            android:layout_margin="5dip"
+            android:hint="tvDirCpostal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDirPobla"
+            android:layout_below="@+id/tvDirCpostal"
+
+            android:layout_margin="5dip"
+            android:hint="tvDirPobla"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDirPais"
+            android:layout_below="@+id/tvDirPobla"
+
+            android:layout_margin="5dip"
+            android:hint="tvDirPais"/>
+
+     </RelativeLayout>
 
 </ScrollView>
 
