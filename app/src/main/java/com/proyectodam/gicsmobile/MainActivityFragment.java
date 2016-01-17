@@ -1,5 +1,6 @@
 package com.proyectodam.gicsmobile;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.proyectodam.gicsmobile.json.Venue;
@@ -27,6 +29,7 @@ public class MainActivityFragment extends Fragment {
 
     private ArrayList<Venue> items;
     private VenueAdapter adapter;
+    public static String OBJETO_LUGAR = "OBJETO_LUGAR";
 
     public MainActivityFragment() {
     }
@@ -47,14 +50,24 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        ListView lvPelis = (ListView) rootView.findViewById(R.id.lvPelis);
+        ListView lvVenues = (ListView) rootView.findViewById(R.id.lvVenues);
         items = new ArrayList<Venue>();
         adapter = new VenueAdapter(
                 getContext(),
                 R.layout.lvvvenues_row,
                 items
         );
-        lvPelis.setAdapter(adapter);
+        lvVenues.setAdapter(adapter);
+
+        lvVenues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getContext(), DetailActivity.class);
+                i.putExtra(OBJETO_LUGAR, adapter.getItem(position));
+                startActivity(i);
+            }
+        });
+
 
         return rootView;
 
