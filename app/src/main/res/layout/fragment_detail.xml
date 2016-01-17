@@ -143,9 +143,25 @@ tools:showIn="@layout/activity_detail">
             android:layout_margin="5dip"
             android:hint="tvDirPais"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opiniones"
+            android:id="@+id/button"
+            android:onClick="verComentarios"
+            android:background="#80b2ee"
+            android:layout_marginTop="37dp"
+            android:allowUndo="true"
+            android:layout_below="@+id/tvDirPais"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
      </RelativeLayout>
 
+
 </ScrollView>
+
+
 
 
 </RelativeLayout>
