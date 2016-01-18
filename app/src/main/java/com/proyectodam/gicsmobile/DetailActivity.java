@@ -1,5 +1,6 @@
 package com.proyectodam.gicsmobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -82,5 +83,7 @@ public class DetailActivity extends AppCompatActivity {
     public void verComentarios(View view) {
         TextView DirTitul = (TextView) findViewById(R.id.tvDirTitul);
         DirTitul.setText("Pulsado boton");
+        Intent i = new Intent(this, TipsActivity.class);
+        startActivity(i);
     }
 }

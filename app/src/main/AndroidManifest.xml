@@ -33,6 +33,11 @@
             android:label="@string/title_activity_detail"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".TipsActivity"
+            android:label="@string/title_activity_tips"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

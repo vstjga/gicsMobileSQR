@@ -52,4 +52,5 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_tips">TipsActivity</string>
 </resources>
