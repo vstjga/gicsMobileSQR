@@ -22,7 +22,8 @@ public class TipsActivityFragment extends Fragment {
 
     private ArrayList<Item_> items;
     private TipsAdapter adapter;
-    public static String OBJETO_LUGAR = "OBJETO_LUGAR";
+    private String idLugar;
+
     public TipsActivityFragment() {
     }
 
@@ -36,6 +37,9 @@ public class TipsActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tips, container, false);
         ListView lvTips = (ListView) rootView.findViewById(R.id.lvTips);
+
+
+
         items = new ArrayList<Item_>();
         adapter = new TipsAdapter(
                 getContext(),
@@ -63,8 +67,13 @@ public class TipsActivityFragment extends Fragment {
         Log.d(ll, "preferencias --> ubicacion");
         Log.d(v, "preferencias --> fecha");
 
+//        String id = "40a55d80f964a52020f31ee3";
 
-        apiClientTips.getLugares(adapter, clave, v);
+
+        TipsActivity activity = (TipsActivity) getActivity();
+        String idLugar = activity.getIdlugar();
+        Log.d(idLugar, "de lugar");
+        apiClientTips.getLugares(adapter, idLugar, clave, v);
 
 
     }

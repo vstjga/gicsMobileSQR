@@ -16,6 +16,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 
@@ -43,9 +44,10 @@ public class APIClientTips {
 
 
 
-    public void getLugares(final ArrayAdapter<Item_> adapter, String clave, String v) {
+    public void getLugares(final ArrayAdapter<Item_> adapter, String id, String clave, String v) {
         Log.d(clave, "DEBUGJGA");
-        Call<Comentarios> call = servei.getLugaresSQR(clave, v);
+
+        Call<Comentarios> call = servei.getLugaresSQR(id, clave, v);
         call.enqueue(new Callback<Comentarios>() {
 
                          @Override
@@ -73,10 +75,11 @@ public class APIClientTips {
     interface ApiGicsInterfase {
 
 
-        @GET("/v2/venues/40a55d80f964a52020f31ee3/tips")
-        Call<Comentarios> getLugaresSQR(@Query("oauth_token") String clave,@Query("v") String v);
+        @GET("/v2/venues/{id}/tips")
+        Call<Comentarios> getLugaresSQR(@Path("id") String id,@Query("oauth_token") String clave,@Query("v") String v);
 
-
+  //      @GET("/group/{id}/users")
+  //      Call<Comentarios> groupList(@Path("id") int groupId, @Query("sort") String sort);
 
     }
 }

@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private String idLugar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,11 +80,16 @@ public class DetailActivity extends AppCompatActivity {
         DirPobla.setText("Población: " + lugares.getLocation().getCity());
         DirPais.setText("Población: " + lugares.getLocation().getCountry());
 
+        idLugar = lugares.getId();
+
     }
 
     public void verComentarios(View view) {
 
         Intent i = new Intent(this, TipsActivity.class);
+        i.putExtra("idLugar", idLugar+"");
         startActivity(i);
     }
+
+
 }

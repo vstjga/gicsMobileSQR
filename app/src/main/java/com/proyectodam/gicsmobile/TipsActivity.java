@@ -11,6 +11,8 @@ import com.proyectodam.gicsmobile.R;
 
 public class TipsActivity extends AppCompatActivity {
 
+    public String idLugar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,13 @@ public class TipsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        idLugar = getIntent().getStringExtra("idLugar");
+
 
     }
 
+    public String getIdlugar () {
+        return this.idLugar;
+
+    }
 }
