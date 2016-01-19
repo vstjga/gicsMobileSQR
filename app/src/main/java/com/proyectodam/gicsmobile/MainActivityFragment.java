@@ -50,7 +50,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        ListView lvVenues = (ListView) rootView.findViewById(R.id.lvVenues);
+        ListView lvVenues = (ListView) rootView.findViewById(R.id.lvTips);
         items = new ArrayList<Venue>();
         adapter = new VenueAdapter(
                 getContext(),

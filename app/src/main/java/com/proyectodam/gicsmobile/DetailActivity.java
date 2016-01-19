@@ -81,8 +81,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void verComentarios(View view) {
-        TextView DirTitul = (TextView) findViewById(R.id.tvDirTitul);
-        DirTitul.setText("Pulsado boton");
+
         Intent i = new Intent(this, TipsActivity.class);
         startActivity(i);
     }
