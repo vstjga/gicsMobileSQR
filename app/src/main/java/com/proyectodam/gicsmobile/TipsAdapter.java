@@ -36,7 +36,7 @@ public class TipsAdapter extends ArrayAdapter<Item_> {
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         TextView tvTexto = (TextView) convertView.findViewById(R.id.tvTexto);
 
-        ImageView ivPosterImage = (ImageView) convertView.findViewById(R.id.ivPosterImage);
+    ImageView ivPosterImage = (ImageView) convertView.findViewById(R.id.ivPosterImage);
 
         tvName.setText(myitem.getUser().getFirstName());
         tvTexto.setText(myitem.getText());
@@ -48,7 +48,7 @@ public class TipsAdapter extends ArrayAdapter<Item_> {
 
         url_imagen = myitem.getPhotourl();
 
-        Picasso.with(getContext()).load(url_imagen).into(ivPosterImage);
+     //  Picasso.with(getContext()).load(url_imagen).into(ivPosterImage);
 
         return convertView;
 
