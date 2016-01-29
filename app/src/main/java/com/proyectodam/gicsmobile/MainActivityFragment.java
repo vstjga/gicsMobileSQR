@@ -1,7 +1,10 @@
 package com.proyectodam.gicsmobile;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -18,7 +21,15 @@ import android.widget.ListView;
 import com.proyectodam.gicsmobile.json.Venue;
 
 import java.util.ArrayList;
-
+import android.app.ListActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -31,6 +42,13 @@ public class MainActivityFragment extends Fragment {
     private VenueAdapter adapter;
     public static String OBJETO_LUGAR = "OBJETO_LUGAR";
 
+
+
+    private Cursor cursor;
+
+    DAOLugaresDB dao= new DAOLugaresDB();
+
+
     public MainActivityFragment() {
     }
 
@@ -38,6 +56,12 @@ public class MainActivityFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        LugaresDbHelper dbHelper = new LugaresDbHelper(getContext());
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+  //      dbHelper.onCreate(db);
+
+    //    getContext().deleteDatabase("LugaresDB");
 
     }
 
@@ -50,14 +74,27 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+
         ListView lvVenues = (ListView) rootView.findViewById(R.id.lvTips);
+
         items = new ArrayList<Venue>();
+
         adapter = new VenueAdapter(
                 getContext(),
                 R.layout.lvvvenues_row,
                 items
         );
         lvVenues.setAdapter(adapter);
+
+
+
+
+
+
+
+
+
 
         lvVenues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -104,9 +141,15 @@ public class MainActivityFragment extends Fragment {
         Log.d(v, "preferencias --> fecha");
 
 
-        apiClient.getLugares(adapter, clave, ll, v);
+        apiClient.getLugares(getContext());
+
+
+        dao.mostrarLugares(getContext(), adapter);
+
+
 
 
     }
+
 
 }

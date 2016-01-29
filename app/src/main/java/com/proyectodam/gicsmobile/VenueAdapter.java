@@ -52,7 +52,9 @@ public class VenueAdapter extends ArrayAdapter<Venue> {
         if (numcat > 0) {
             Category categoria1 = categorias.get(0);
             Icon icono = categoria1.getIcon();
-            url_imagen = icono.getPrefix() + "bg_88" + icono.getSuffix(); // error autorizacion en url-api
+//           url_imagen = icono.getPrefix() + "bg_88" + icono.getSuffix();
+             url_imagen = icono.getPrefix();
+
         }
 
         Picasso.with(getContext()).load(url_imagen).into(ivPosterImage);

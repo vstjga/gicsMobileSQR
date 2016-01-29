@@ -54,12 +54,14 @@ public class DetailActivity extends AppCompatActivity {
         Integer numcat = categorias.size();
         String  numcats = numcat.toString();
 
-        String url_imagen = "https://ss3.4sqi.net/img/categories_v2/food/pizza_bg_88.png"; // imagen omision
+        String url_imagen = "https://ss3.4sqi.net/img/categories_v2/food/pizza_bg_88.png";
 
         if (numcat > 0) {
             Category categoria1 = categorias.get(0);
             Icon icono = categoria1.getIcon();
-            url_imagen = icono.getPrefix() + "bg_88" + icono.getSuffix(); // error autorizacion en url-api
+//            url_imagen = icono.getPrefix() + "bg_88" + icono.getSuffix();
+              url_imagen = icono.getPrefix(); //
+
             nombreCat  = categoria1.getName();
         }
 
