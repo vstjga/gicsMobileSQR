@@ -53,13 +53,9 @@ public class APIClient {
 
 
   //  public void getLugares(final Context context, final ArrayAdapter<Venue> adapter, String clave, String ll, String v) {
-      public void getLugares(final Context context) {
+      public void getLugares(final Context context,String clave, String ll, String v) {
 
 
-          SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-          String clave          = preferences.getString("clave", "KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR");
-          String ll             = preferences.getString("ubicacion", "41.387920,2.169919");
-          String v              = preferences.getString("fecha", "20160101");
 
         Call<Lugares> call = servei.getLugaresSQR(clave, ll, v);
         call.enqueue(new Callback<Lugares>() {

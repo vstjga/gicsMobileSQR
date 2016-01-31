@@ -69,7 +69,7 @@ public class DAOLugaresDB {
 
         LugaresDbHelper admin = new LugaresDbHelper(context, "SQRGICSDB", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-
+        adapter.clear();
 
 
         final Cursor c = db.rawQuery("select * from Lugares", null);

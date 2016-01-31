@@ -122,9 +122,19 @@ public class MainActivityFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
     private void refresh() {
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        String clave          = preferences.getString("clave", "KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR");
+        String ll             = preferences.getString("ubicacion", "41.387920,2.169919");
+        String v              = preferences.getString("fecha", "20160101");
+
+
         APIClient apiClient = new APIClient();
-        apiClient.getLugares(getContext());
+
+        apiClient.getLugares(getContext(),clave,ll,v);
 
         dao.mostrarLugares(getContext(), adapter);
 

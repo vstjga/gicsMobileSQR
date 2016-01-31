@@ -50,9 +50,7 @@ public class LugaresDbHelper extends SQLiteOpenHelper {
 
        APIClient apiClient = new APIClient();
 
-       apiClient.getLugares(context);
-
-
+ 
     }
 
     @Override
