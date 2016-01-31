@@ -35,12 +35,11 @@ import android.widget.Toast;
  */
 public class MainActivityFragment extends Fragment {
 
- //   private ArrayList<String> items;
- //    private ArrayAdapter<String> adapter;
 
     private ArrayList<Venue> items;
     private VenueAdapter adapter;
     public static String OBJETO_LUGAR = "OBJETO_LUGAR";
+    private OnLugarSelectedListener listener;
 
 
 
@@ -55,13 +54,10 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+
         LugaresDbHelper dbHelper = new LugaresDbHelper(getContext());
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-  //      dbHelper.onCreate(db);
-
-    //    getContext().deleteDatabase("LugaresDB");
 
     }
 
@@ -71,6 +67,12 @@ public class MainActivityFragment extends Fragment {
         refresh();
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener = (OnLugarSelectedListener) context;
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
@@ -87,21 +89,14 @@ public class MainActivityFragment extends Fragment {
         );
         lvVenues.setAdapter(adapter);
 
-
-
-
-
-
-
-
-
-
         lvVenues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getContext(), DetailActivity.class);
-                i.putExtra(OBJETO_LUGAR, adapter.getItem(position));
-                startActivity(i);
+
+                boolean tablet = getResources().getBoolean(R.bool.dos_fragments);
+                Venue lugar = adapter.getItem(position);
+                listener.onLugarSelected(lugar);
+
             }
         });
 
@@ -129,26 +124,16 @@ public class MainActivityFragment extends Fragment {
     }
     private void refresh() {
         APIClient apiClient = new APIClient();
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-        String clave          = preferences.getString("clave", "KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR");
-        String ll             = preferences.getString("ubicacion", "41.387920,2.169919");
-        String v              = preferences.getString("fecha", "20160101");
-
-        Log.d(clave, "preferencias --> clave");
-        Log.d(ll, "preferencias --> ubicacion");
-        Log.d(v, "preferencias --> fecha");
-
-
         apiClient.getLugares(getContext());
-
 
         dao.mostrarLugares(getContext(), adapter);
 
+    }
 
+    // Container Activity must implement this interface
 
-
+    public interface OnLugarSelectedListener {
+        void onLugarSelected(Venue lugar);
     }
 
 

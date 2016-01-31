@@ -8,7 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.proyectodam.gicsmobile.json.Venue;
+
+public class MainActivity extends AppCompatActivity implements MainActivityFragment.OnLugarSelectedListener {
+    public static String OBJETO_LUGAR = "OBJETO_LUGAR";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,5 +44,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onLugarSelected(Venue lugar) {
+        boolean tablet = getResources().getBoolean(R.bool.dos_fragments);
+
+        if (tablet) {
+            DetailActivityFragment detailFragment = (DetailActivityFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.fragmentDetail);
+            detailFragment.loadLugarFromActivity(lugar);
+        } else {
+
+            Intent i = new Intent(this, DetailActivity.class);
+            i.putExtra(OBJETO_LUGAR, lugar);
+            startActivity(i);
+
+        }
     }
 }

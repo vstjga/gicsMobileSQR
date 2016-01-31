@@ -1,6 +1,8 @@
 package com.proyectodam.gicsmobile;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -54,8 +56,12 @@ public class APIClient {
       public void getLugares(final Context context) {
 
 
+          SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+          String clave          = preferences.getString("clave", "KIG3YM0N0TFADPJIR4K4GSZNSSFEPWK1IBDS10NVUIUNDOVR");
+          String ll             = preferences.getString("ubicacion", "41.387920,2.169919");
+          String v              = preferences.getString("fecha", "20160101");
 
-        Call<Lugares> call = servei.getLugaresSQR(clavefinal, llfinal, vfinal);
+        Call<Lugares> call = servei.getLugaresSQR(clave, ll, v);
         call.enqueue(new Callback<Lugares>() {
 
                          @Override
@@ -63,10 +69,10 @@ public class APIClient {
                              if (response.isSuccess()) {
                                  Lugares MisLugares = response.body();
 
-                             //    adapter.clear();
+
                                  db.borrarLugares (context);
                                  for (Venue prod : MisLugares.getResponse().getVenues()) {
-                             //     adapter.add(prod);
+
 
                                      String categoria = "";
 
